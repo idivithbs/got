@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Market Segmentation Survey</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		label {
+			display: block;
+			margin-bottom: 10px;
+			font-weight: bold;
+		}
+		input[type="radio"] {
+			margin-right: 10px;
+		}
+	</style>
+</head>
+<body>
+	<h1>Market Segmentation Survey</h1>
+	<form>
+		<h2>Demographic Segmentation:</h2>
+		<label for="age">What is your age?</label>
+		<input type="radio" id="18-24" name="age" value="18-24">
+		<label for="18-24">18-24</label>
+		<input type="radio" id="25-34" name="age" value="25-34">
+		<label for="25-34">25-34</label>
+		<input type="radio" id="35-44" name="age" value="35-44">
+		<label for="35-44">35-44</label>
+		<input type="radio" id="45-54" name="age" value="45-54">
+		<label for="45-54">45-54</label>
+		<input type="radio" id="55+" name="age" value="55+">
+		<label for="55+">55+</label>
+
+		<label for="gender">What is your gender?</label>
+		<input type="radio" id="male" name="gender" value="male">
+		<label for="male">Male</label>
+		<input type="radio" id="female" name="gender" value="female">
+		<label for="female">Female</label>
+		<input type="radio" id="other" name="gender" value="other">
+		<label for="other">Other</label>
+
+		<label for="marital-status">What is your marital status?</label>
+		<input type="radio" id="single" name="marital-status" value="single">
+		<label for="single">Single</label>
+		<input type="radio" id="married" name="marital-status" value="married">
+		<label for="married">Married</label>
+		<input type="radio" id="divorced" name="marital-status" value="divorced">
+		<label for="divorced">Divorced</label>
+		<input type="radio" id="widowed" name="marital-status" value="widowed">
+		<label for="widowed">Widowed</label>
+
+		<label for="education-level">What is your education level?</label>
+		<input type="radio" id="less-than-high-school" name="education-level" value="less-than-high-school">
+		<label for="less-than-high-school">Less than high school</label>
+		<input type="radio" id="high-school" name="education-level" value="high-school">
+		<label for="high-school">High school/GED</label>
+		<input type="radio" id="some-college" name="education-level" value="some-college">
+		<label for="some-college">Some college</label>
+		<input type="radio" id="bachelors-degree" name="education-level" value="bachelors-degree">
+        <label for="bachelors-degree">Bachelor's degree</label>
+        <input type="radio" id="masters-degree" name="education-level" value="masters-degree">
+        <label for="masters-degree">Master's degree</label>
+        <input type="radio" id="doctoral-degree" name="education-level" value="doctoral-degree">
+        <label for="doctoral-degree">Doctoral degree</label>
+        <h2>Geographic Segmentation:</h2>
+        <label for="country">What country do you live in?</label>
+        <select id="country" name="country">
+            <option value="usa">United States</option>
+            <option value="canada">Canada</option>
+            <option value="mexico">Mexico</option>
+            <option value="other">Other</option>
+        </select>
+    
+        <label for="state">What state/province do you live in?</label>
+        <input type="text" id="state" name="state">
+    
+        <label for="city">What city/town do you live in?</label>
+        <input type="text" id="city" name="city">
+    
+        <h2>Psychographic Segmentation:</h2>
+        <label for="interests">What are your interests/hobbies?</label>
+        <textarea id="interests" name="interests"></textarea>
+    
+        <label for="personality-type">What is your personality type?</label>
+        <select id="personality-type" name="personality-type">
+            <option value="introvert">Introvert</option>
+            <option value="extrovert">Extrovert</option>
+            <option value="ambivert">Ambivert</option>
+        </select>
+    
+        <h2>Lifestyle Segmentation:</h2>
+		<label for="interests">What are your interests?</label>
+		<input type="checkbox" id="sports" name="interests" value="sports">
+		<label for="sports">Sports</label>
+		<input type="checkbox" id="arts" name="interests" value="arts">
+		<label for="arts">Arts</label>
+		<input type="checkbox" id="travel" name="interests" value="travel">
+		<label for="travel">Travel</label>
+		<input type="checkbox" id="food" name="interests" value="food">
+		<label for="food">Food</label>
+		<input type="checkbox" id="music" name="interests" value="music">
+		<label for="music">Music</label>
+        <label for="personality-type">What is your personality type?</label>
+        <input type="radio" id="introvert" name="personality-type" value="introvert">
+        <label for="introvert">Introvert</label>
+        <input type="radio" id="extrovert" name="personality-type" value="extrovert">
+        <label for="extrovert">Extrovert</label>
+        <input type="radio" id="ambivert" name="personality-type" value="ambivert">
+        <label for="ambivert">Ambivert</label>
+        
+        <h2>Behavioral Segmentation:</h2>
+        <label for="brand-loyalty">How loyal are you to a particular brand?</label>
+        <input type="radio" id="very-loyal" name="brand-loyalty" value="very-loyal">
+        <label for="very-loyal">Very loyal</label>
+        <input type="radio" id="somewhat-loyal" name="brand-loyalty" value="somewhat-loyal">
+        <label for="somewhat-loyal">Somewhat loyal</label>
+        <input type="radio" id="not-very-loyal" name="brand-loyalty" value="not-very-loyal">
+        <label for="not-very-loyal">Not very loyal</label>
+        <input type="radio" id="not-loyal-at-all" name="brand-loyalty" value="not-loyal-at-all">
+        <label for="not-loyal-at-all">Not loyal at all</label>
+    
+        <label for="buying-habits">What are your buying habits?</label>
+        <input type="radio" id="impulsive" name="buying-habits" value="impulsive">
+        <label for="impulsive">Impulsive</label>
+        <input type="radio" id="planned" name="buying-habits" value="planned">
+        <label for="planned">Planned</label>
+        <input type="radio" id="bargain-hunter" name="buying-habits" value="bargain-hunter">
+        <label for="bargain-hunter">Bargain hunter</label>
+        
+        
+    
+    

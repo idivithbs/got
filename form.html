@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Customer Segmentation Form</title>
+</head>
+<body>
+	<h1>Customer Segmentation Form</h1>
+	<p>Please select a segmentation model:</p>
+	<select id="model-select">
+		<option value="demographic">Demographic Segmentation</option>
+		<option value="technographic">Technographic Segmentation</option>
+		<option value="geographic">Geographic Segmentation</option>
+		<option value="psychographic">Psychographic Segmentation</option>
+		<option value="behavioral">Behavioral Segmentation</option>
+		<option value="needs-based">Needs-Based Segmentation</option>
+		<option value="value-based">Value-Based Segmentation</option>
+	</select>
+	<button onclick="displayQuestions()">Select Model</button>
+
+	<div id="question-container"></div>
+
+	<button onclick="submitForm()">Submit</button>
+
+	<script>
+		// This is where you would write your JavaScript code to handle the form submission and save the data to an Excel file.
+		// You would also write the code to display the appropriate questions based on the selected segmentation model.
+		function displayQuestions() {
+			// This function would be responsible for displaying the appropriate questions based on the selected segmentation model.
+			// You would use conditional statements to determine which questions to display based on the selected model.
+			var modelSelect = document.getElementById("model-select");
+			var selectedModel = modelSelect.options[modelSelect.selectedIndex].value;
+
+			// You would use a switch statement or a series of if/else statements to determine which questions to display.
+			// For example:
+			var questionContainer = document.getElementById("question-container");
+			switch (selectedModel) {
+				case "demographic":
+					questionContainer.innerHTML = `
+						<p>What is your age?</p>
+						<input type="number" name="age" required>
+						<p>What is your gender?</p>
+						<label><input type="radio" name="gender" value="male" required>Male</label>
+						<label><input type="radio" name="gender" value="female" required>Female</label>
+						<label><input type="radio" name="gender" value="other" required>Other</label>
+						<p>What is your marital status?</p>
+						<label><input type="radio" name="marital-status" value="single" required>Single</label>
+						<label><input type="radio" name="marital-status" value="married" required>Married</label>
+						<label><input type="radio" name="marital-status" value="divorced" required>Divorced</label>
+						<label><input type="radio" name="marital-status" value="widowed" required>Widowed</label>
+					`;
+					break;
+				case "geographic":
+					questionContainer.innerHTML = `
+						<p>What is your zip code?</p>
+						<input type="number" name="zip-code" required>
+						<p>What is your country of residence?</p>
+						<input type="text" name="country" required>
+						<p>What is your state/province of residence?</p>
+						<input type="text" name="state" required>
+					`;
+					break;
+				// You would continue 	// the switch statement for each model type with its corresponding questions
+
+			default:
+				break;
+		}
+	}
+
+	function submitForm() {
+		// This function would be responsible for submitting the form data and saving it to an Excel file.
+		// You would use JavaScript libraries or server-side code to handle the data submission and Excel file creation.
+
+		// Here's an example of how you might use the jQuery library to submit the form data via AJAX:
+		$.ajax({
+			url: "submit-form.php",
+			method: "POST",
+			data: $("#customer-segmentation-form").serialize(),
+			success: function(response) {
+				alert("Form submitted successfully!");
+			},
+			error: function(xhr, status, error) {
+				alert("Error submitting form: " + error);
+			}
+		});
+	}
+</script>
+

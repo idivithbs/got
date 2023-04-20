@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Customer Segmentation Form</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+	<h1>Customer Segmentation Form</h1>
+	<p>Select a segmentation model:</p>
+	<select id="model-select">
+		<option value="demographic">Demographic</option>
+		<option value="technographic">Technographic</option>
+		<option value="geographic">Geographic</option>
+		<option value="psychographic">Psychographic</option>
+		<option value="behavioral">Behavioral</option>
+		<option value="needs-based">Needs-based</option>
+		<option value="value-based">Value-based</option>
+	</select>
+	<div id="question-container"></div>
+
+	<button onclick="submitForm()">Submit</button>
+
+	<script>
+		// Define the questions for each segmentation model
+		const questions = {
+			demographic: [
+				{ label: "Age", type: "number", required: true },
+				{ label: "Gender", type: "select", options: ["Male", "Female", "Other"] },
+				{ label: "Education Level", type: "select", options: ["High School", "College", "Graduate School"] },
+				{ label: "Marital Status", type: "select", options: ["Single", "Married", "Divorced"] },
+				{ label: "Employment Status", type: "select", options: ["Employed", "Unemployed", "Retired"] }
+			],
+			technographic: [
+				{ label: "Device Type", type: "select", options: ["Desktop", "Laptop", "Tablet", "Mobile"] },
+				{ label: "Operating System", type: "select", options: ["Windows", "MacOS", "Linux", "iOS", "Android"] },
+				{ label: "Browser", type: "select", options: ["Chrome", "Firefox", "Safari", "Edge", "IE"] },
+				{ label: "Internet Speed", type: "select", options: ["High Speed", "Medium Speed", "Low Speed"] }
+			],
+			geographic: [
+				{ label: "Country", type: "select", options: ["USA", "Canada", "Mexico", "Brazil", "Argentina"] },
+				{ label: "State/Province", type: "select", options: ["California", "New York", "Texas", "Quebec", "Ontario"] },
+				{ label: "City", type: "text" },
+				{ label: "Zip Code", type: "text" }
+			],
+			psychographic: [
+				{ label: "Personality Type", type: "select", options: ["Introverted", "Extroverted", "Ambivert"] },
+				{ label: "Values", type: "checkbox", options: ["Family", "Career", "Health", "Wealth"] },
+				{ label: "Interests", type: "checkbox", options: ["Sports", "Music", "Art", "Travel"] },
+				{ label: "Attitudes", type: "checkbox", options: ["Environmentalism", "Social Justice", "Spirituality", "Self-Improvement"] }
+			],
+			behavioral: [
+				{ label: "Purchase History", type:"textarea", required: true },
+{ label: "Frequency of Purchase", type: "select", options: ["Daily", "Weekly", "Monthly", "Yearly"] },
+{ label: "Brand Loyalty", type: "select", options: ["Strongly Loyal", "Somewhat Loyal", "Not Loyal"] },
+{ label: "Shopping Habits", type: "checkbox", options: ["Online", "In-store", "Both"] }
+],
+"needs-based": [
+{ label: "Problem/Need", type: "textarea", required: true },
+{ label: "Solutions Tried", type: "textarea" },
+{ label: "Satisfaction with Solutions", type: "select", options: ["Very Satisfied", "Somewhat Satisfied", "Not Satisfied"] },
+{ label: "Importance of Solution", type: "select", options: ["Highly Important", "Somewhat Important", "Not Important"] }
+],
+"value-based": [
+{ label: "Beliefs/Values", type: "textarea", required: true },
+{ label: "Brand Perception", type: "select", options: ["Positive", "Neutral", "Negative"] },
+{ label: "Social Responsibility", type: "select", options: ["Very Important", "Somewhat Important", "Not Important"] },
+{ label: "Brand Image", type: "checkbox", options: ["Innovative", "Trustworthy", "Quality", "Affordable"] }
+]
+};
+	// Function to generate form elements based on selected model
+	function generateFormElements(model) {
+		const questionContainer = $("#question-container");
+		questionContainer.empty();
+
+		questions[model].forEach((question) => {
+			const div = $("<div>");
+
+			const label = $("<label>").text(question.label);
+			div.append(label);
+
+			if (question.type === "select") {
+				const select = $("<select>").attr("name", question.label);
+
+				if (question.options) {
+					question.options.forEach((option) => {
+						const opt = $("<option>").attr("value", option).text(option);
+						select.append(opt);
+					});
+				}
+
+				div.append(select);
+			} else if (question.type === "checkbox") {
+				if (question.options) {
+					question.options.forEach((option) => {
+						const label = $("<label>");
+						const checkbox = $("<input>").attr({ "type": "checkbox", "name": question.label, "value": option });
+						label.append(checkbox, option);
+						div.append(label);
+					});
+				}
+			} else {
+				const input = $("<input>").attr({ "type": question.type, "name": question.label });
+
+				if (question.required) {
+					input.prop("required", true);
+				}
+
+				div.append(input);
+			}
+
+			questionContainer.append(div);
+		});
+	}
+
+	// Event listener for model select change
+	$("#model-select").on("change", function() {
+		const selectedModel = $(this).val();
+		generateFormElements(selectedModel);
+	});
+
+	// Function to submit form and save data to excel file
+	function submitForm() {
+		const formData = new FormData($("#segmentation-form")[0]);
+
+		// Code to save formData to excel file goes here
+
+		alert("Form submitted successfully!");
+		location.reload();
+	}
+</script>
+</body>
+</html>
